@@ -245,4 +245,9 @@ public class CountryList {
         ArrayList<Country> newList = new ArrayList<>(list);
         return filter(newList, (c) -> (c.getName().length() >= number));
     }
+
+    public ArrayList<Country> filterByPopulation(ArrayList<Country> list, int number){
+        ArrayList<Country> newList = new ArrayList<>(list);
+        return filter(newList, (c) -> c.getPopulation() >= number);
+    }
 }
