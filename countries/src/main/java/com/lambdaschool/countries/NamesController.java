@@ -22,8 +22,8 @@ public class NamesController {
     // localhost:2019/names/start/a
     @GetMapping( value = "/start/{letter}", produces = {"application/json"})
     public ResponseEntity<?> getNamesByLetter(@PathVariable char letter){
-        ArrayList<Country> list = new ArrayList<>(CountryList.countryList);
-        ArrayList<Country> data = CountriesApplication.mainCountryList.getNamesByLetter(list, letter);
+//        ArrayList<Country> list = new ArrayList<>(CountryList.countryList);
+        ArrayList<Country> data = CountriesApplication.mainCountryList.getNamesByLetter(letter);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
@@ -31,7 +31,7 @@ public class NamesController {
     @GetMapping(value = "/size/{number}", produces = {"application/json"})
     public ResponseEntity<?> getNamesOfXSize(@PathVariable int number){
         ArrayList<Country> list = new ArrayList<>(CountryList.countryList);
-        ArrayList<Country> data = CountriesApplication.mainCountryList.getNamesBySize(list, number);
+        ArrayList<Country> data = CountriesApplication.mainCountryList.getNamesBySize(number);
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
 }

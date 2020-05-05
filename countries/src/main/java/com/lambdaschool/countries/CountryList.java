@@ -235,16 +235,16 @@ public class CountryList {
         return newList;
     }
 
-    public ArrayList<Country> getNamesByLetter(ArrayList<Country> list, char letter){
-        ArrayList<Country> newList = new ArrayList<>(list);
+    public ArrayList<Country> getNamesByLetter(char letter){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
         ArrayList<Country> filteredList = filter(newList, country -> country.getName()
                                                                             .toUpperCase()
                                                                             .charAt(0) == Character.toUpperCase(letter));
         return sortedNames(filteredList);
     }
 
-    public ArrayList<Country> getNamesBySize(ArrayList<Country> list, int number){
-        ArrayList<Country> newList = new ArrayList<>(list);
+    public ArrayList<Country> getNamesBySize(int number){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
         return filter(newList, (c) -> (c.getName().length() >= number));
     }
 
