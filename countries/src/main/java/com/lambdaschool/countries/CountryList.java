@@ -279,4 +279,34 @@ public class CountryList {
         newList.sort(compareByPopulation.reversed());
         return newList.get(0);
     }
+
+    public ArrayList<Country> getCountriesByAge(int age){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
+        return filter(newList,  c -> c.getMedianAge() >= age);
+
+    }
+
+    public Country getMinAge(){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
+        Comparator<Country> compareAges = new Comparator<Country>() {
+            @Override
+            public int compare(Country c1, Country c2) {
+                return c1.getMedianAge() - c2.getMedianAge();
+            }
+        };
+        newList.sort(compareAges);
+        return newList.get(0);
+    }
+
+    public Country getMaxAge(){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
+        Comparator<Country> compareAges = new Comparator<Country>() {
+            @Override
+            public int compare(Country c1, Country c2) {
+                return c1.getMedianAge() - c2.getMedianAge();
+            }
+        };
+        newList.sort(compareAges.reversed());
+        return newList.get(0);
+    }
 }
