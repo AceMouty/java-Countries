@@ -2,6 +2,8 @@ package com.lambdaschool.countries;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class CountryList {
     static ArrayList<Country> countryList = new ArrayList<Country>();
@@ -249,5 +251,32 @@ public class CountryList {
     public ArrayList<Country> filterByPopulation(ArrayList<Country> list, int number){
         ArrayList<Country> newList = new ArrayList<>(list);
         return filter(newList, (c) -> c.getPopulation() >= number);
+    }
+
+    public Country getMinCountry(){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
+        Comparator<Country> compareByPopulation = new Comparator<Country>() {
+            @Override
+            public int compare(Country c1, Country c2) {
+               return c1.getPopulation() - c2.getPopulation();
+            }
+        };
+//        Comparator<Country> compareByPopulation = ((Country c1, Country c2) -> c1.getPopulation() - c2.getPopulation());
+
+
+        newList.sort(compareByPopulation);
+        return newList.get(0);
+    }
+
+    public Country getMaxCountry(){
+        ArrayList<Country> newList = new ArrayList<>(countryList);
+        Comparator<Country> compareByPopulation = new Comparator<Country>() {
+            @Override
+            public int compare(Country c1, Country c2) {
+                return c1.getPopulation() - c2.getPopulation();
+            }
+        };
+        newList.sort(compareByPopulation.reversed());
+        return newList.get(0);
     }
 }
